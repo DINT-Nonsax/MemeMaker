@@ -1,0 +1,56 @@
+﻿<Window x:Class="MemeMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemeMaker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="850">
+    <Window.Resources>
+        <local:BorderConverter x:Key="conversor"/>
+    </Window.Resources>
+    <DockPanel>
+        <Grid Margin="6" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Texto superior" Grid.Column="0" Grid.Row="0"/>
+            <TextBox Name="topText" Grid.Column="1" Grid.Row="0"/>
+            <TextBlock Text="Texto inferior" Grid.Column="0" Grid.Row="1"/>
+            <TextBox Name="bottomText" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Text="Alto" Grid.Column="0" Grid.Row="2"/>
+            <Slider Name="alto" Value="500" Grid.Column="1" Grid.Row="2" Maximum="1000" Minimum="100"/>
+            <TextBlock Text="Ancho" Grid.Column="0" Grid.Row="3"/>
+            <Slider Name="ancho" Value="500"  Grid.Column="1" Grid.Row="3" Maximum="1000" Minimum="100"/>
+            <TextBlock Text="Imagen" Grid.Column="0" Grid.Row="4"/>
+            <TextBox Name="imagen" Grid.Column="1" Grid.Row="4"/>
+            <TextBlock Text="Borde" Grid.Column="0" Grid.Row="5"/>
+            <CheckBox Name="borde" Grid.Column="1" Grid.Row="5"/>
+            
+        </Grid>
+        <Border Background="Aqua" BorderThickness="{Binding ElementName=borde, Path=IsChecked, Converter={StaticResource conversor}}"  BorderBrush="Black" Height="{Binding ElementName=alto, Path=Value}" Width="{Binding ElementName=ancho, Path=Value}">
+            <Grid>
+                <Image Source="{Binding ElementName=imagen, Path=Text}" Stretch="Fill"/>
+                <TextBlock Text="{Binding ElementName=topText, Path=Text}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" FontFamily="impact" Foreground="White">
+                    <TextBlock.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="1"/>
+                    </TextBlock.BitmapEffect>
+                </TextBlock>
+                <TextBlock Text="{Binding ElementName=bottomText, Path=Text}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="50" FontFamily="impact" Foreground="White">
+                    <TextBlock.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="1"/>
+                    </TextBlock.BitmapEffect>
+                </TextBlock>
+            </Grid>
+        </Border>
+    </DockPanel>
+</Window>
