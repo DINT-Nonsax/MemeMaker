@@ -42,12 +42,12 @@
                 <Image Source="{Binding ElementName=imagen, Path=Text}" Stretch="Fill"/>
                 <TextBlock Text="{Binding ElementName=topText, Path=Text}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="50" FontFamily="impact" Foreground="White">
                     <TextBlock.BitmapEffect>
-                        <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="1"/>
+                        <DropShadowBitmapEffect/>
                     </TextBlock.BitmapEffect>
                 </TextBlock>
                 <TextBlock Text="{Binding ElementName=bottomText, Path=Text}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="50" FontFamily="impact" Foreground="White">
                     <TextBlock.BitmapEffect>
-                        <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="1"/>
+                        <DropShadowBitmapEffect/>
                     </TextBlock.BitmapEffect>
                 </TextBlock>
             </Grid>
